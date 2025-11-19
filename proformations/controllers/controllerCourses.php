@@ -1,3 +1,4 @@
+<!-- controllerCourses/addOneCourse -->
 <?php
 
 include_once('models/modelCourses.php');
@@ -31,5 +32,34 @@ function getAllCourses(){
 
     $resultGetCourses->closeCursor();
 }
+
+
+function getUpdateCourse($courseId) {
+    $data = getCourse($courseId);
+    if(!$data) {
+        $message = "Aucun cours !";
+    }else {
+        require_once('views/viewUpdateCourse.php');
+    }
+}
+
+function setUpdateCourse($id) {
+    if (isset($_POST['update'])) {
+
+        updateCourse(
+            $id,
+            $_POST['courseCode'],
+            $_POST['courseTitle'],
+            $_POST['courseLangage']
+        );
+
+        // header("Location: controllerCourses/getAllCourses");
+        // exit();
+        header("Location: index.php?action=controllerCourses/getAllCourses");
+        exit();
+
+    }
+}
+
 
 ?>

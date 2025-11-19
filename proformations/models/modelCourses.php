@@ -26,4 +26,20 @@ function getCourses(){
     return $resultGetCourses;
 }
 
+function getCourse($courseId) {
+    $bddPDO = connexionBDD();
+    $requete = "SELECT * FROM courses WHERE courseId = $courseId";
+    $result = $bddPDO->query($requete);
+    $data = $result->fetch(PDO::FETCH_ASSOC);
+    return $data;
+}
+
+function updateCourse($id, $code, $title, $lang) {
+    $pdo = connexionBDD();
+    $stmt = $pdo->prepare("UPDATE courses 
+                           SET courseCode=?, courseTitle=?, courseLangage=? 
+                           WHERE courseId=?");
+    return $stmt->execute([$code, $title, $lang, $id]);
+}
+
 ?>

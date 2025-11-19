@@ -1,7 +1,8 @@
 <?php require_once 'header.html'; ?>
 
-    <form action="index.php?action=controllerCourses/addOneCourse" method="post">
-        
+    <!-- <form action="index.php?action=controllerCourses/addOneCourse" method="post"> -->
+    <form action="controllerCourses/addOneCourse" method="post">
+
         <center>
             <h2>Ajout d'un nouveau cours</h2>
             <table>
@@ -28,4 +29,4 @@
             </table>
         </center>
     </form>
- <?php require_once 'footer.html'; ?>
+ <?php require_once 'footer.html'?>
